@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cs:object xmlns:cs="http://www.example.org/conceptualspace"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.example.org/conceptualspace ../xml_schemas/object.xsd "
+ id="02441664n" name="instance_test">
+
+<class id="">animal</class>
+
+<genericPhysicalDescription>
+
+<hasPart id="" name="shell">
+
+</hasPart>
+
+</genericPhysicalDescription>
+
+</cs:object>

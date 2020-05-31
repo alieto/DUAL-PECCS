@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+This file is part of an anonymized submission to the ICAJ 2015 International Conference; this is why no author is provided in this header. However, Copyright and all rights therein are retained by authors. 
+
+This file and all content of the present bundle are to be considered unpublished and confidential material, that the authors share with the IJCAI 2015 Reviewers for their reviewing activity. 
+-->
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/conceptualspace"
+	xmlns:cs="http://www.example.org/conceptualspace"
+	>
+	
+	<xsd:include schemaLocation="domains.xsd"></xsd:include>
+	
+  
+  <xsd:complexType name="objectType">
+   	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+      		<xsd:element name="class" type="cs:classDomain" minOccurs="0" maxOccurs="unbounded"/>
+      		<xsd:element name="family" type="cs:familyDomain" minOccurs="0" maxOccurs="unbounded"/>
+      		<xsd:element name="genericPhysicalDescription" type="cs:genericPhysicalDescription" minOccurs="0" maxOccurs="1"/>
+      		<xsd:element name="manRelationship" type="cs:manRelationshipDomain" minOccurs="0" maxOccurs="1"/>		
+    	</xsd:choice> 
+    	<xsd:attribute name="id" type="xsd:string" use="optional" />
+    	<xsd:attribute name="name" type="xsd:string" use="optional" />
+  	</xsd:complexType>	
+  
+  <xsd:element name="object" type="cs:objectType"/>
+
+</xsd:schema>

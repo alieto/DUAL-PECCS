@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+This file is part of an anonymized submission to the ICAJ 2015 International Conference; this is why no author is provided in this header. However, Copyright and all rights therein are retained by authors. 
+
+This file and all content of the present bundle are to be considered unpublished and confidential material, that the authors share with the IJCAI 2015 Reviewers for their reviewing activity. 
+-->
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/conceptualspace"
+	xmlns:cs="http://www.example.org/conceptualspace"
+	>
+	
+	<xsd:include schemaLocation="object.xsd"></xsd:include>
+	
+	<xsd:element name="objects" type="cs:objectsType"/>
+	
+	<xsd:complexType name="objectsType">
+    	<xsd:sequence>
+      		<xsd:element name="object" type="cs:objectType"  minOccurs="1" maxOccurs="unbounded"/>
+    		</xsd:sequence>
+  	</xsd:complexType>
+	
+
+</xsd:schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cs:object xmlns:cs="http://www.example.org/conceptualspace"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.example.org/conceptualspace ../xml_schemas/object.xsd "
+ id="02441664n" name="instance_test">
+
+<!-- The big carnivore with yellow fur and black stripes -->
+
+<genericPhysicalDescription>
+
+<feeding id="" name="carnivore">
+<foodType>5</foodType>
+</feeding>
+
+<hasPart id="" name="fur">
+
+<partColor id="04965661" name="yellow">
+<l id="04951373">80</l>
+<a>-20</a>
+<b>94</b>
+</partColor>
+
+</hasPart>
+
+<hasPart id="" name="stripe">
+
+<partColor id="04960277" name="black">
+<l id="04951373">0</l>
+<a>0</a>
+<b>0</b>
+</partColor>
+
+</hasPart>
+
+</genericPhysicalDescription>
+
+</cs:object>

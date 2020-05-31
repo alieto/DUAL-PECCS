@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+This file is part of an anonymized submission to the ICAJ 2015 International Conference; this is why no author is provided in this header. However, Copyright and all rights therein are retained by authors. 
+
+This file and all content of the present bundle are to be considered unpublished and confidential material, that the authors share with the IJCAI 2015 Reviewers for their reviewing activity. 
+-->
+
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/conceptualspace"
+	xmlns:cs="http://www.example.org/conceptualspace"
+	>
+
+	<xsd:include schemaLocation="dimensions.xsd"></xsd:include>
+	
+	<xsd:complexType name="decimalSizeDimension">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:decimalSize">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="lightnessColorDimension">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:lightnessColor">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="aColorDimension">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:aColor">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="bColorDimension">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:bColor">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="humidityLocationDimension">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:humidityLocation">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="temperatureLocationDimension">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:temperatureLocation">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="altitudeLocationDimension">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:altitudeLocation">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="vegetationLocationDimension">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:humidityLocation">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="timeLocationDimension">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:humidityLocation">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="speedLocomotionDimension">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:speedLocomotion">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="classDomain">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:classDimension">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="familyDomain">
+		<xsd:simpleContent>
+			<xsd:extension base="cs:familyDimension">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="shapeDomain">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="favoriteFoodDomain">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="favoriteLocationDomain">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+
+	<xsd:complexType name="sizeDomain">
+		<xsd:all>
+			<xsd:element name="x" type="cs:decimalSizeDimension" />
+			<xsd:element name="y" type="cs:decimalSizeDimension" />
+			<xsd:element name="z" type="cs:decimalSizeDimension" />
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="optional" />
+  		<xsd:attribute name="name" type="xsd:string" use="optional" />
+	</xsd:complexType>
+	
+	<xsd:complexType name="colorDomain">
+		<xsd:all>
+    		<xsd:element name="l" type="cs:lightnessColorDimension"/>
+    		<xsd:element name="a" type="cs:aColorDimension"/>
+    		<xsd:element name="b" type="cs:bColorDimension"/>
+  		</xsd:all>
+  		<xsd:attribute name="id" type="xsd:string" use="optional" />
+  		<xsd:attribute name="name" type="xsd:string" use="optional" />
+	</xsd:complexType>
+	
+	<xsd:complexType name="locationDomain">
+		<xsd:choice maxOccurs="unbounded">
+    		<xsd:element name="humidity" type="cs:humidityLocationDimension" minOccurs="0" maxOccurs="1"/>
+    		<xsd:element name="temperature" type="cs:temperatureLocationDimension" minOccurs="0" maxOccurs="1"/>
+    		<xsd:element name="altitude" type="cs:altitudeLocationDimension" minOccurs="0" maxOccurs="1"/>
+    		<xsd:element name="vegetation" type="cs:vegetationLocationDimension" minOccurs="0" maxOccurs="1"/>
+    		<xsd:element name="time" type="cs:timeLocationDimension" minOccurs="0" maxOccurs="1"/>
+    		<xsd:element name="favoriteLocation" type="cs:favoriteLocationDomain" minOccurs="0" maxOccurs="unbounded"/>
+  		</xsd:choice>
+  		<xsd:attribute name="id" type="xsd:string" use="optional" />
+  		<xsd:attribute name="name" type="xsd:string" use="optional" />
+	</xsd:complexType>
+	
+	
+	
+	<xsd:complexType name="feedingDomain">
+		<xsd:choice maxOccurs="unbounded">
+    		<xsd:element name="foodType" type="cs:foodTypeFeedingDimension" minOccurs="0" maxOccurs="1"/>
+    		<xsd:element name="foodQuantity" type="cs:foodQuantityFeedingDimension" minOccurs="0" maxOccurs="1"/>
+    		<xsd:element name="favoriteFood" type="cs:favoriteFoodDomain" minOccurs="0" maxOccurs="unbounded"/>
+  		</xsd:choice>
+  		<xsd:attribute name="id" type="xsd:string" use="optional" />
+  		<xsd:attribute name="name" type="xsd:string" use="optional" />
+	</xsd:complexType>
+	
+	<xsd:complexType name="locomotionDomain">
+		<xsd:all>
+    		<xsd:element name="movement" type="cs:movementLocomotionDimension" minOccurs="0" maxOccurs="1"/>
+    		<xsd:element name="speed" type="cs:speedLocomotionDimension" minOccurs="0" maxOccurs="1"/>
+  		</xsd:all>
+  		<xsd:attribute name="id" type="xsd:string" use="optional" />
+  		<xsd:attribute name="name" type="xsd:string" use="optional" />
+	</xsd:complexType>
+	
+	<xsd:complexType name="functionDomain">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="productDomain">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="symbolDomain">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+			<xsd:attribute name="id" type="xsd:string" use="optional" />
+		</xsd:extension>
+		</xsd:simpleContent>	
+	</xsd:complexType>
+	
+	<xsd:complexType name="manRelationshipDomain">
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element name="function" type="cs:functionDomain" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="product" type="cs:productDomain" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="symbol" type="cs:symbolDomain" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+	</xsd:complexType>
+	
+	
+	<!-- definition created to extend and make more general the bodyPartConcept-->
+ 	<xsd:complexType name="partConcept">
+    	<xsd:choice maxOccurs="unbounded">
+      		<xsd:element name="number" type="xsd:nonNegativeInteger" minOccurs="0" maxOccurs="unbounded"/>
+      		<xsd:element name="partShape" type="cs:shapeDomain" minOccurs="0" maxOccurs="unbounded"/>
+      		<xsd:element name="partSize" type="cs:sizeDomain" minOccurs="0" maxOccurs="unbounded"/>
+      		<xsd:element name="partColor" type="cs:colorDomain" minOccurs="0" maxOccurs="unbounded"/>
+    	</xsd:choice>    
+    	<xsd:attribute name="id" type="xsd:string" use="optional" />
+    	<xsd:attribute name="name" type="xsd:string" use="optional" />
+  	</xsd:complexType>
+
+  	
+  	<xsd:complexType name="genericPhysicalDescription">
+    	<xsd:choice maxOccurs="unbounded">
+    		<xsd:element name="shape" type="cs:shapeDomain" minOccurs="0" maxOccurs="unbounded"/>
+      		<xsd:element name="size" type="cs:sizeDomain" minOccurs="0" maxOccurs="1"/>
+      		<xsd:element name="color" type="cs:colorDomain" minOccurs="0" maxOccurs="unbounded"/>
+      		<xsd:element name="location" type="cs:locationDomain" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="feeding" type="cs:feedingDomain" minOccurs="0" maxOccurs="unbounded"/>
+      		<xsd:element name="locomotion" type="cs:locomotionDomain" minOccurs="0" maxOccurs="unbounded"/>
+     	 	<xsd:element name="hasPart" type="cs:partConcept" minOccurs="0" maxOccurs="unbounded"/>
+     	 	<xsd:element name="partOf" type="cs:partConcept" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:choice>
+  </xsd:complexType>
+	
+	
+</xsd:schema>

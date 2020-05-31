@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+This file is part of an anonymized submission to the ICAJ 2015 International Conference; this is why no author is provided in this header. However, Copyright and all rights therein are retained by authors. 
+
+This file and all content of the present bundle are to be considered unpublished and confidential material, that the authors share with the IJCAI 2015 Reviewers for their reviewing activity. 
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/conceptualspace">
+
+	<xsd:simpleType name="decimalSize">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0.00" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="lightnessColor">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:maxInclusive value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="aColor">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="-128" />
+			<xsd:maxInclusive value="127" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="bColor">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="-128" />
+			<xsd:maxInclusive value="127" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="humidityLocation">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:maxInclusive value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="temperatureLocation">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="-40" />
+			<xsd:maxInclusive value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="altitudeLocation">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="-11000" />
+			<xsd:maxInclusive value="8848" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="vegetationLocation">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:maxInclusive value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="timeLocation">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:minInclusive value="1" />
+			<xsd:maxInclusive value="5" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="foodTypeFeedingDimension">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:minInclusive value="1" />
+			<xsd:maxInclusive value="5" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="foodQuantityFeedingDimension">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="movementLocomotionDimension">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:minInclusive value="1" />
+			<xsd:maxInclusive value="8" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="speedLocomotion">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="classDimension">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="animal" />
+			<xsd:enumeration value="artifact" />
+			<xsd:enumeration value="plant" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="familyDimension">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="amphibian" />
+			<xsd:enumeration value="arachnid" />
+			<xsd:enumeration value="crustacean" />
+			<xsd:enumeration value="insect" />
+			<xsd:enumeration value="mammal" />
+			<xsd:enumeration value="mollusk" />
+			<xsd:enumeration value="fish" />
+			<xsd:enumeration value="reptile" />
+			<xsd:enumeration value="bird" />
+			<xsd:enumeration value="worm" />
+			<xsd:enumeration value="bovine" />
+			<xsd:enumeration value="camelidae" />
+			<xsd:enumeration value="canidae" />
+			<xsd:enumeration value="caprinae" />
+			<xsd:enumeration value="cervidae" />
+			<xsd:enumeration value="cetacean" />
+			<xsd:enumeration value="equine" />
+			<xsd:enumeration value="feline" />
+			<xsd:enumeration value="marsupial" />
+			<xsd:enumeration value="mustelidae" />
+			<xsd:enumeration value="pachyderm" />
+			<xsd:enumeration value="pinniped" />
+			<xsd:enumeration value="primate" />
+			<xsd:enumeration value="raptor" />
+			<xsd:enumeration value="rodent" />
+			<xsd:enumeration value="ruminant" />
+			<xsd:enumeration value="suidae" />
+			<xsd:enumeration value="ursidae" /> 
+
+			<xsd:enumeration value="present" />
+			<xsd:enumeration value="transport" />
+			<xsd:enumeration value="furniture" />
+			<xsd:enumeration value="book" />
+			<xsd:enumeration value="musical_instrument" />
+			<xsd:enumeration value="architectural_element" />
+			
+			<xsd:enumeration value="fruit" />
+			<xsd:enumeration value="store" />
+			<xsd:enumeration value="building" />
+			<xsd:enumeration value="currency" />
+
+
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

@@ -1,0 +1,250 @@
+;; 
+;; This file is part of an anonymized submission to the ICAJ 2015 
+;; International Conference; this is why no author is provided in 
+;; this header. However, Copyright and all rights therein are 
+;; retained by authors. 
+;; 
+;; This file and all content of the present bundle are to be 
+;; considered unpublished and confidential material, that the 
+;; authors share with the IJCAI 2015 Reviewers for their 
+;; reviewing activity. 
+;;
+
+;;  Java ACT-R doesn't support chunk type declaration and hierarchy so the following line are only for documentation. The $ action works implicitly considering this subclass relationship.
+;; (chunk-type prototype (:include instance))
+;; (chunk-type exemplar (:include instance))
+
+;; With the integration of S1S2 we have introduced some new keyword that must not be used by the user in his code.
+;; These keywords are: exemplar, prototype, instance, concept for the isa slot; reprX and concX, where X is a number, for the chunk name.
+
+;; This command was introduced in order to import the complete kb of S1 into the ACT-R declarative memory. I have decided to not import automatically the kb when every model loads because we have the purpose to mantain this version of ACT-R completely usable by every type of user: even if they don't want to use S1S2.
+(add-dm-s1-kb)
+
+(add-dm
+    ;; this chunk represents the encoding of the textual description
+    ;; the order of the feature of the request chunk is not relevant. After the translation all the slots that refers to the same feature are at the same level (e.g. family_1_x will be at the same level of family_2_x and family_3_x). The only constraint is that the counter must start from 1 to n, without missing numbers.
+    *INSERT_REQUEST_CHUNK_HERE*
+    
+    ;; the goal chunk points to the request-chunk
+    (g isa goal-type state init inputRequest requestChunk_0 retry 0)
+)
+
+(goal-focus g)
+
+;; executed after a precedent classification for clear the (incorrect) precedent response
+(p clear-request-1
+    =goal>
+        ;; IMPORTANT: uncommenting this line we block the retry (the classification executes only one time even if S2 result is inconsistent)
+        ;; block thisrule
+        state   retry-S1
+        inputrequest =req
+==>
+    +retrieval>
+        =req
+    =goal>
+        state clearing-1
+)
+
+;; clears the id and name into the request chunk
+(p clear-request-2
+    =goal>
+        state clearing-1
+    =retrieval>
+        isa instance
+==>
+    =retrieval>
+        name nil
+        wid nil
+    =goal>
+        state init
+)
+
+;; the three rules init-S1-x implements the retrial mechanism and counts the number of retries.
+(p init-S1-1
+    =goal> 
+        state init
+        retry 0
+==>
+    =goal>
+        state S1ready
+        retry 1
+)
+
+(p init-S1-2
+    =goal> 
+        state init
+        retry 1
+==>
+    =goal>
+        state S1ready
+        retry 2
+)
+
+(p init-S1-3
+    =goal> 
+        state init
+        retry 2
+==>
+    =goal>
+        state S1ready
+        retry 3
+)
+
+;; this rule gets the request chunk and make a $ request to the retrieval buffer. The $ responses from S1 are never recently retrieved concepts, so we have not to specify it in the request.
+(p request-to-s1
+    =goal>
+        ISA         goal-type
+        state       S1ready
+        inputRequest =req
+==>
+    $retrieval>
+        =req 
+    =goal>
+        state   requestedS1 
+)
+
+;; this rule clears the conceptual finsts (at this time is never executed)
+(p clear-recently-retrieved-concepts
+    =goal> 
+        ;; change this precondition to execute the rule
+        block thisrule
+==>
+    $retrieval>
+        :recently-retrieved reset
+)
+
+;; this rule is a test for a direct request to $ buffer. A direct request specifies directly a set of slots-value pairs instead of addressing an existing chunk into the retrieval buffer
+(p request-to-s1-direct
+    =goal>
+        ;; comment the following line to unlock the rule
+        block thisrule
+        ISA         goal-type
+        state       S1ready
+        inputRequest =req
+==>
+    $retrieval>
+        ;; the number associated to the features is not relevant for the retrieval
+        family_1_name mammal
+        feeding_1_name carnivore
+    =goal>
+        state   requestedS1 
+)
+
+;; when we execute this rule the retrieval buffer contains the exemplar or the prototype retrieved by S1. So we request the conceptual chunk to which the representation refers.
+(p response-from-s1-1
+    =goal>
+        state   requestedS1
+        inputrequest =req
+    =retrieval>
+        name =name
+        wid =wid
+==>
+    !output!     (S1 representation retrieved: =name)
+    +retrieval>
+        isa concept
+        wid =wid
+    =goal>
+        state prepareS2-1
+)
+
+;;the retrieval buffer contains the conceptual chunk, so we can output the S1 result.
+(p response-from-s1-2
+    =goal>
+        state   prepareS2-1
+        inputrequest =req
+    =retrieval>
+        isa concept
+        name =name
+        wid =wid
+==>
+    !output!     (S1 concept retrieved: =name)
+    +imaginal>
+        S1name =name
+        S1wid =wid
+    +retrieval>
+        =req
+    =goal>
+        state prepareS2-2
+)
+
+;; we put into the request chunk the retrieved S1 result so we can perform a $ request to S2 to test the consistency of the supposed result.
+(p prepare-to-s2
+    =goal>
+        state prepareS2-2
+    =retrieval>
+        isa instance
+    =imaginal>
+        S1name =name
+        S1wid =wid
+==>
+    =retrieval>
+        name =name
+        wid =wid
+    =goal>
+        state S2ready
+    =imaginal>
+        ;; we "refresh" the content of the imaginal buffer so we can use it later
+        S1name =name
+        S1wid =wid
+)
+
+;; this rule performs a S2 $ request to the retrieval buffer to test the consistency of the tipicality-based result given by S1.
+(p request-to-s2
+    =goal>
+        state S2ready
+    ?retrieval>
+        state free
+    =retrieval>
+    =imaginal>
+        S1name =name
+        S1wid =wid
+==>
+    =goal>
+        state requestedS2
+    $retrieval>
+        =retrieval
+    =imaginal>
+        ;; we "refresh" the content of the imaginal buffer so we can use it later
+        S1name =name
+        S1wid =wid
+)
+
+;; this rule is executed when S2 confirms the consistency of the S1 result. 
+(p response-from-s2-consistent
+    =goal>
+        state requestedS2
+    ?retrieval>
+        state free
+    =imaginal>
+        S1wid =wid
+    =retrieval>
+        isa instance
+        - name nil
+        - wid nil
+        wid =wid
+        name =name
+==>
+        
+    !output! (S2 consistent =name)
+    =goal>
+        state S2consistent
+)
+
+;; this rule is executed when the S1 result is inconsistent.  
+(p response-from-s2-inconsistent 
+    =goal>
+        state requestedS2
+    ?retrieval>
+        state free
+    =retrieval>
+        isa instance
+    =imaginal>
+        S1name =name
+==>
+    !output! (S2 inconsistence detected for =name)
+    =goal>
+        state retry-S1
+)
+
+(spp response-from-s2-consistent :u 0)
+(spp response-from-s2-inconsistent :u -1)

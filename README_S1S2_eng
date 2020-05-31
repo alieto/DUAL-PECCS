@@ -1,0 +1,53 @@
+S1S2 System - Version 0.1 - Jul-2-2015
+
+
+DUAL-Peccs 
+
+Authors:
+Antonio Lieto, Daniele P. Radicioni and Valentina Rho.
+
+
+
+Licensing
+---------
+
+Copyright on the files in this bundle is retained by the authors.
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+
+
+
+General information
+---------------------
+The archive contains 4 folders and a file S1S2Controller.jar, which is the core of the system.
+- 'lib' contains the libraries necessary to run the system.
+- 'config' contains the configuration files. Changes should be restricted to the file ‘user.properties’.
+- 'files' contains static files required to run the system. In particular, this folder contains:
+	[1] a folder 'database' with the dump of the database used by the system.
+	[2] a folder 'knowledge_base', with the files used by S1
+	[3] a folder 'ontology', with the files used by S2
+	[4] a folder 'temp_files' which will contain the xml file of the stimulus used at runtime.
+- The ’examples' folder contains some stimuli already encoded, and a text file with the whole list of stimuli we used in the test.
+
+
+Requirements and configuration
+------------------------------
+In order to run the software, some additional steps are required:
+- WordNet 3.0 installed on your computer;
+- Create a database (e.g., by using phpmyadmin) named 'sistemas2cyc' to import the sql dump provided in 'files/database';
+- Set the correct paths into the configuration file 'config/user.properties’, by following the instructions in the file. Please note that:
+	[1] if the folder 'files' was not moved or changed, you do not need to change the properties 'knowledgebase.dir' and 'ontology.dir'.
+	[2] the file specified in 'xmlQuery.path' performs two functions: (a) when using the Information Extraction step (see section Running, point [1]) this file will be created or overwritten to store the encoded stimulus; (b) if you don’t make use of the Information Extraction step (see section Running, point [2]) this property must contain the path to an XML file containing a stimulus already encoded, for example taken from the examples.
+
+Running
+--------
+To run the system, you must first open a terminal and position itself in the folder containing the main jar file 'S1S2Controller.jar' and the folder 'config', using the command:
+	> Cd path/to/directory
+
+Two sorts execution are allowed:
+
+[1] Full pipeline: typing the following command you will run the system by feeding it with the stimulus.
+	> Java -jar S1S2Controller.jar "The big carnivorous fur with yellow and black stripes"
+
+[2] Without information extraction: if you don’t specify the first parameter, then it is assumed that the path specified with the 'xmlQuery.path' property into the file 'config/user.properties' refers to the stimulus (XML encoding), to be analyzed by s1 and s2. The system will skip the IE step. You can run through:
+	> Java -jar S1S2Controller.jar
