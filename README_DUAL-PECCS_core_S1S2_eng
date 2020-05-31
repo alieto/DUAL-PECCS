@@ -1,10 +1,24 @@
-S1S2 System - Version 0.1 - Jul-2-2015
+DUAL-PECCS System (core S1S2 System) - Version 0.1 - Jul-2-2015.
 
 
-DUAL-Peccs 
+
+
+DUAL-Peccs stands for Dual Prototypes and Exemplars based Conceptual Categorization System and
+has been described in the IJCAI 2015 paper "A Common-Sense Conceptual Categorization System Integrating Heterogeneous Proxytypes and the Dual Process of Reasoning", by
+Antonio Lieto, Daniele P. Radicioni and Valentina Rho, In Proceedings of the International Joint Conference on Artificial Intelligence (IJCAI), Buenos Aires, July 2015, pp. 875-881.
+
+An extended version of the system is described in  "Dual PECCS: A Cognitive System for Conceptual Representation and Categorization" by Antonio Lieto, Daniele P. Radicioni and Valentina Rho, in Journal of Experimental & Theoretical Artificial Intelligence (JETAI), Vol. 29(2), pp. 433-452, Taylor and Francis
+
 
 Authors:
 Antonio Lieto, Daniele P. Radicioni and Valentina Rho.
+
+Due to the space restrictions in GitHub (the amount of dependencies between
+different libraries was too heavy for the repository) the current version only 
+contains the core deployed version of the system and of its ACT-R extension.
+
+
+The full runnable version containing all the libraries is available on http://www.dualpeccs.di.unito.it/downloads/current/.
 
 
 
@@ -19,13 +33,15 @@ This work is licensed under the Creative Commons Attribution-NonCommercial-Share
 
 General information
 ---------------------
-The archive contains 4 folders and a file S1S2Controller.jar, which is the core of the system.
-- 'lib' contains the libraries necessary to run the system.
+The current archive contains 3 folders (i.e. the core of the DUAL-PECCS system) and a file S1S2Controller.jar.
 - 'config' contains the configuration files. Changes should be restricted to the file ‘user.properties’.
 - 'files' contains static files required to run the system. In particular, this folder contains:
 	[1] a folder 'database' with the dump of the database used by the system.
 	[2] a folder 'knowledge_base', with the files used by S1
-	[3] a folder 'ontology', with the files used by S2
+	[3] a folder 'ontology', with the files used by S2. 
+	Please note that due to the space restrictions of GitHub, the ontology temp.owl (necessary to run the software)
+	is not included. The complete bundle containing all the necessary software and libraries to run the system 
+	is available at http://www.dualpeccs.di.unito.it/downloads/current/
 	[4] a folder 'temp_files' which will contain the xml file of the stimulus used at runtime.
 - The ’examples' folder contains some stimuli already encoded, and a text file with the whole list of stimuli we used in the test.
 
