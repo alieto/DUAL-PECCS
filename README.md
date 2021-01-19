@@ -23,7 +23,8 @@ This work is licensed under the Creative Commons Attribution-NonCommercial-Share
 
 General information
 ---------------------
-This file integrates the information provided in the README_S1S2_eng about the following:
+This file integrates the information provided in the README_S1S2_eng (https://github.com/alieto/DUAL-PECCS/blob/master/README_DUAL-PECCS_core_S1S2_eng) about the following:
+
 [1] ChunkEncoder.jar - for the conversion of a textual stimulus into a chunk representation;
 [2] Extended_Java_ACT-R.jar - for running the extended ACT-R environment;
 [3] files/actr_models - containing a file 'working_model.actr' and the template file for the automatic creation of models with ChunkEncoder.
